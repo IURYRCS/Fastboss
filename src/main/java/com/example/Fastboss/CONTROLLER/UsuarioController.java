@@ -1,7 +1,7 @@
-package com.example.fastboss.CONTROLLER;
+package com.example.Fastboss.CONTROLLER;
 
-import com.example.fastboss.MODEL.Usuario;
-import com.example.fastboss.SERVICE.UsuarioService;
+import com.example.Fastboss.MODEL.Usuario;
+import com.example.Fastboss.SERVICE.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,14 +15,14 @@ import java.util.Optional;
 
 
 public class UsuarioController {
+    @Autowired
+    UsuarioService usuarioService;
     @PostMapping()
     public ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario usuario){
 
         Usuario response = usuarioService.salvar(usuario);
         return ResponseEntity.ok(response);
     }
-    @Autowired
-    UsuarioService usuarioService;
 
     @GetMapping(path = "/all", produces = "application/json")
     public ResponseEntity<List<Usuario>> buscarTodos(){
@@ -54,7 +54,7 @@ public class UsuarioController {
     @PutMapping()
     public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
 
-        if (!usuarioService.buscarPorId(Usuario.getId()).isPresent()) {
+        if (!usuarioService.buscarPorId(usuario.getId()).isPresent()) {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(usuarioService.atualizar(usuario));

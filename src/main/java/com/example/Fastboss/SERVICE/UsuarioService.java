@@ -1,15 +1,16 @@
-package com.example.fastboss.SERVICE;
+package com.example.Fastboss.SERVICE;
 
-import com.example.fastboss.MODEL.Usuario;
-import com.example.fastboss.REPOSITORY.UsuarioRepository;
+import com.example.Fastboss.MODEL.Usuario;
+import com.example.Fastboss.REPOSITORY.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Service
 public class UsuarioService {
 
         @Autowired
